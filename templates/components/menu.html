@@ -1,0 +1,41 @@
+<div class="ui secondary menu" id="menu">
+  <a class="logo" href="/">
+    Django Diary
+  </a>
+  <div class="right menu mobile-hide">
+    {% if request.user.is_authenticated %}
+    {% for item in menu %}
+    <a class="{% if item.0 == active_menu %}active {% endif %}item" href="{{ item.1 }}">{{ item.0}}</a>
+    {% endfor %}
+    <div class="ui dropdown item">
+      <i class="user circle icon" style="font-size: 20px;"></i> {{ request.user }}
+      <div class="menu">
+        <a class="item" href="/logout">Log Out</a>
+      </div>
+    </div>
+    {% else %}
+    <a href="/login" class="item">Log In</a>
+    <a href="/signup" class="item">Sign Up</a>
+    {% endif %}
+  </div>
+  <div class="right menu mobile-show" style="z-index: 100;">
+    <div class="ui icon dropdown teal button" style="height: 35px; margin-top: 5px; margin-right: 10px;">
+      <span class="text">Menu</span>
+      <div class="menu" style="margin-top: 10px; left: -97px !important;">
+        {% if request.user.is_authenticated %}
+        <div class="header"> <i class="rocket icon"></i>Navigation</div>
+
+        {% for m in menu %}
+        <a class="item" href="{{ m.1 }}">{{ m.0 }}</a>
+        {% endfor %}
+        <div class="ui divider"></div>
+        <div class="header"> <i class="user icon"></i> User</div>
+        <a class="item" href="/logout">Log Out</a>
+        {% else %}
+        <a href="/login" class="item">Log In</a>
+        <a href="/signup" class="item">Sign Up</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

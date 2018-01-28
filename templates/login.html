@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form class="" action="/login/" method="post" style="max-width: 350px; margin: auto; padding: 20px 30px; background: white; border-radius: 6px; box-shadow: 0px 0px 1px #ccc;">
+    {% csrf_token %}
+    <div class="ui form">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" name="username">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password">
+      </div>
+      <br>
+      <input type="submit" value="Submit" class="ui button teal fullwidth">
+    </div>
+  </form>
+{% endblock %}

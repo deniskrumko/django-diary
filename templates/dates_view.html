@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if entries %}
+  {% for entry in entries %}
+    <a href="/diary/date-{{ entry.date|date:'Y-m-d' }}/">{{ entry.date }}</a>
+    <br><br>
+  {% endfor %}
+  <a href="/diary/" class="ui button teal">Create new one</a>
+{% else %}
+  <h1>You have no entries!</h1>
+  <br>
+  <a href="/diary/create/" class="ui button teal">Create new one</a>
+{% endif %}
+{% endblock %}

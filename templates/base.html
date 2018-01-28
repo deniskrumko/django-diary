@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>{{ title }}</title>
+    {# Jquery #}
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+    {# Semantic UI #}
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
+    <script src="{% static 'semantic/semantic.min.js' %}"></script>
+
+    {# Fonts #}
+    <link
+      href="https://fonts.googleapis.com/css?family=Caveat|Pacifico|Paytone+One"
+      rel="stylesheet">
+
+    {# Base #}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+    <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+
+    {% block extrastyle %}{% endblock %}
+
+    {% block extrajs %}
+    <script src="{% static 'js/textarea.js' %}" charset="utf-8"></script>
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+    <main class="site-content">
+      <div class="ui container">
+        {% include "components/menu.html" %}
+        <div class="content">
+          {% block content %}
+
+          {% endblock %}
+        </div>
+      </div>
+    </main>
+    {% endblock %}
+  </body>
+</html>

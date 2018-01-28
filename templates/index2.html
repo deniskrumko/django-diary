@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{# CSS #}
+{% block extrastyle %}
+{{ block.super }}
+<style media="screen">
+
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="container" style="text-align: center;">
+<br>
+<br>
+<br>
+<div class="">
+  <div class="logo-block">
+    <div class="logo big">
+      Django Diary
+    </div>
+    <div class="bydeniskrumko">
+      by Denis Krumko
+    </div>
+  </div>
+  <br>
+  <br>
+
+  {% if request.user.is_authenticated %}
+    <div class="row">
+      <a href="/diary/" class="ui button teal">Current day</a>
+      <span style="padding: 7px 10px;">or</span>
+      <a href="/diary/all-dates/" class="ui button teal">View all dates</a>
+    </div>
+  {% else %}
+    <div class="row">
+      <a href="/login" class="ui button teal">Log In</a>
+      <span style="padding: 7px 10px;">or</span>
+      <a href="/signup" class="ui button teal">Sign Up</a>
+    </div>
+  {% endif %}
+  <br>
+  <div class="box effect2 index-box">
+    <textarea id="note" class="noselect" name="text">Welcome to your Django-based service for storing your secrets!
+
+I hope you will find this diary as a nice place for keeping your memories about your life.
+
+P.S. Also you can try write something right here :)</textarea>
+  </div>
+</div>
+
+</div>
+
+{% endblock %}

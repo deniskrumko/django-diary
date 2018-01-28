@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{# JS #}
+{% block extrajs %}
+<script type="text/javascript">
+$(function() {
+
+  autosize($('textarea'));
+
+  $( "#note" ).focus();
+
+  $('.box').click(function () {
+    $( "#note" ).focus();
+  });
+
+  $("#note-date").click(function (event) {
+    // show delete dialog for $(this).closest(".server")
+    event.stopPropagation();
+});
+
+  $('.ui.dropdown')
+    .dropdown()
+  ;
+
+});
+
+</script>
+{% endblock %}
+
+{% block content %}
+<form class="" action="/diary/" method="post">
+  {% csrf_token %}
+  <div class="box effect2">
+    <input id="note-date" class="noselect" type="text" value="{{ note_date|date:'Y-m-d' }}" name="date" placeholder="Enter date" autocomplete="off" required>
+    <textarea id="note" class="noselect" name="text">{{ text }}</textarea>
+  </div>
+  <br>
+  <input type="submit" name="" value="Save" class="ui button teal">
+  <br>
+  <br>
+</form>
+{% endblock %}

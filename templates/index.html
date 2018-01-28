@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="ui grid centered">
+  <div class="row">
+    <h1>Welcome to your diary!</h1>
+  </div>
+  <div class="row">
+    <a href="/diary" class="ui button teal">Current day</a>
+    <span style="padding: 7px 10px;">or</span>
+    <a href="/diary" class="ui button teal">View all dates</a>
+  </div>
+</div>
+{% else %}
+<div class="ui grid centered">
+  <div class="row">
+    <h1>Welcome to Django Diary! Django-based diary web service.</h1>
+  </div>
+  <div class="row">
+    <a href="/login" class="ui button teal">Log In</a>
+    <span style="padding: 7px 10px;">or</span>
+    <a href="/signup" class="ui button teal">Sign Up</a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

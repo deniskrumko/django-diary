@@ -1,0 +1,14 @@
+dj-database-url==0.4.2
+Django==1.11.7
+gunicorn==19.7.1
+psycopg2==2.7.3.2
+python-decouple==3.1
+pytz==2017.3
+whitenoise==3.3.1
+django-extensions==1.9.8
+boto3==1.5.2
+django-storages==1.6.5
+pillow==4.3.0
+django-autoslug==1.9.3
+unidecode==0.4.21
+factory-boy==2.9.2
