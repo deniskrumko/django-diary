@@ -10,6 +10,7 @@ INSTALLED_APPS = [
 
 LOCAL_APPS = [
     'apps.diary',
+    'apps.users',
     'apps.website',
 ]
 

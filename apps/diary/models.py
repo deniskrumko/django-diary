@@ -18,7 +18,7 @@ class Tag(models.Model):
 
 class DiaryEntry(models.Model):
     author = models.ForeignKey(
-        'auth.User',
+        'users.User',
         null=True,
         blank=False,
         related_name='diary_entries',
