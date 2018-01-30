@@ -23,7 +23,11 @@
       rel="stylesheet">
 
     {# Base #}
+    {% if request.user.theme == 'light' %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {% elif request.user.theme == 'dark' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base_dark.css' %}">
+    {% endif %}
 
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 

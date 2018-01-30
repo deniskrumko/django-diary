@@ -10,6 +10,7 @@
     <div class="ui dropdown item">
       <i class="user circle icon" style="font-size: 20px;"></i> {{ request.user }}
       <div class="menu">
+        <a class="item" href="/user/settings/">Settings</a>
         <a class="item" href="/logout">Log Out</a>
       </div>
     </div>
@@ -30,6 +31,7 @@
         {% endfor %}
         <div class="ui divider"></div>
         <div class="header"> <i class="user icon"></i> User</div>
+        <a class="item" href="/user/settings/">Settings</a>
         <a class="item" href="/logout">Log Out</a>
         {% else %}
         <a href="/login" class="item">Log In</a>

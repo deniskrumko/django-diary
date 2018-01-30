@@ -19,7 +19,7 @@ class LoginView(TemplateView):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/diary/all-dates/')
 
         return HttpResponseRedirect('/login')
 

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{# JS #}
+{% block extrajs %}
+{{ block.super }}
+<script type="text/javascript">
+$(function() {
+
+  $('select.dropdown')
+  .dropdown()
+;
+
+});
+</script>
+{% endblock %}
+
+{% block content %}
+  <form class="default-form" action="/user/settings/" method="post">
+    {% csrf_token %}
+    <div class="ui form">
+      <div class="field">
+      <label>Theme</label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="theme" {% if current_theme %}value="{{ current_theme }}"{% endif %}>
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          Select theme
+        </div>
+        <div class="menu">
+          {% for key, theme in themes.items %}
+          <div class="item" data-value="{{ key }}">
+            <i class="{{ theme.icon }} icon"></i>
+            {{ theme.name }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+      <br>
+      <input type="submit" value="Save" class="ui button teal fullwidth">
+    </div>
+  </form>
+{% endblock %}

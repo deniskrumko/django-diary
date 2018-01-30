@@ -11,7 +11,10 @@ class User(AbstractUser):
         unique=True
     )
     settings = JSONField(
-        default={},
+        default={
+            'theme': 'light',
+            'font': 'Caveat',
+        },
         blank=True,
         null=True,
         verbose_name=_('settings')
@@ -28,3 +31,8 @@ class User(AbstractUser):
     @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+    @property
+    def theme(self):
+        theme = self.settings.get('theme')
+        return theme or 'light'

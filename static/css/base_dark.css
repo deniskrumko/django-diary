@@ -2,7 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background: #f7f7f7;
+  background: #21252B;
 }
 
 ::selection {
@@ -116,7 +116,7 @@ body {
   font-family: "Paytone One", Arial;
   line-height: normal !important;
   transition: all 0.3s ease;
-  text-shadow: 1px 1px 1px #ddd;
+  text-shadow: 1px 1px 1px #333;
 }
 
 
@@ -220,9 +220,9 @@ body {
 .box {
 	width:98%;
   min-height: 850px;
-	background:#FFF;
+	background:#282C34;
 	margin:40px auto;
-  box-shadow: 0px 0px 1px #ddd;
+  box-shadow: 0px 0px 1px #000;
   padding: 30px;
 }
 
@@ -244,7 +244,7 @@ body {
   top: 80%;
   max-width:300px;
   background: #999;
-  box-shadow: 0 15px 10px #999;
+  box-shadow: 0 15px 10px #000;
   transform: rotate(-2deg);
 }
 .effect2:after
@@ -264,7 +264,14 @@ body {
   width: 100%;
   height: 100%;
   caret-color: #00aa8d;
+  background-color: transparent;
+  color: #ABB2C0;
 }
+
+::-webkit-input-placeholder {color:#19908b;}
+::-moz-placeholder          {color:#19908b;}/* Firefox 19+ */
+:-moz-placeholder           {color:#19908b;}/* Firefox 18- */
+:-ms-input-placeholder      {color:#19908b;}
 
 .noselect {
    cursor: default;
@@ -288,6 +295,10 @@ body {
   cursor: pointer;
   border-style: none;
   width: 100%;
+  background-color: transparent;
+  caret-color: #00aa8d;
+  color: #00B5AD;
+
 }
 
 .fullwidth {
@@ -298,7 +309,20 @@ body {
   max-width: 350px !important;
   margin: auto;
   padding: 20px 30px;
-  background: white;
+  background: #282C34;
   border-radius: 6px;
-  box-shadow: 0px 0px 1px #ccc;
+  box-shadow: 0px 0px 1px #000;
+}
+
+.ui.form .field>label {
+    display: block;
+    margin: 0 0 .28571429rem 0;
+    color: #00B5AD;
+    font-size: .92857143em;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.ui.menu .item {
+    color: #ABB2C0 !important;
 }
