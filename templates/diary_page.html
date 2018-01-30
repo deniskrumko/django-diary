@@ -22,17 +22,34 @@ $(function() {
     .dropdown()
   ;
 
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+
 });
 
 </script>
 {% endblock %}
 
 {% block content %}
+
+{% for error in errors %}
+<div class="ui negative message">
+<i class="close icon"></i>
+{{ error }}
+</div>
+{% endfor %}
+
 <form class="" action="/diary/" method="post">
   {% csrf_token %}
   <div class="box effect2">
     <input id="note-date" class="noselect" type="text" value="{{ note_date|date:'Y-m-d' }}" name="date" placeholder="Enter date" autocomplete="off" required>
-    <textarea id="note" class="noselect" name="text">{{ text }}</textarea>
+    <textarea id="note" class="noselect" placeholder="Enter text" name="text">{{ text }}</textarea>
   </div>
   <br>
   <input type="submit" name="" value="Save" class="ui button teal">
