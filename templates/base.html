@@ -23,7 +23,7 @@
       rel="stylesheet">
 
     {# Base #}
-    {% if request.user.theme == 'light' %}
+    {% if request.user.theme == 'light' or not request.user.is_authenticated %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {% elif request.user.theme == 'dark' %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base_dark.css' %}">

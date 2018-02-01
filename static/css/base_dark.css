@@ -326,3 +326,34 @@ body {
 .ui.menu .item {
     color: #ABB2C0 !important;
 }
+
+.ui.selection.dropdown {
+  background: transparent !important;
+  border: 1px solid #ABB2C0 !important;
+  color:  #ABB2C0;
+}
+
+.ui.selection.visible.dropdown>.text:not(.default) {
+    font-weight: 400;
+    color:  #ABB2C0;
+}
+
+.ui.dropdown .menu>.item {
+  background: #22262c;
+  color: #ABB2C0;
+}
+
+.ui.dropdown .menu>.item:hover {
+    background: #02b0a8;
+    color: black;
+    z-index: 13;
+}
+
+.ui.selection.dropdown .menu>.item {
+  border-top: 1px solid #292c34;
+}
+
+.ui.dropdown .menu .selected.item, .ui.dropdown.selected {
+    background: #22262c;
+    color: #00B5AD;
+}
