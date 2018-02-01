@@ -12,3 +12,4 @@ pillow==4.3.0
 django-autoslug==1.9.3
 unidecode==0.4.21
 factory-boy==2.9.2
+django-import-export
