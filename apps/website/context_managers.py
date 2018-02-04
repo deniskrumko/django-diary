@@ -4,6 +4,6 @@ def extra_context(request):
         'menu': (
             ('Create note', '/diary/'),
             ('Dates', '/diary/all-dates/'),
-            ('Tags', '/tags/'),
+            # ('Tags', '/tags/'),
         )
     }

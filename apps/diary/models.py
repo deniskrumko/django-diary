@@ -47,3 +47,4 @@ class DiaryEntry(models.Model):
     class Meta:
         verbose_name = _('Diary entry')
         verbose_name_plural = _('Diary entries')
+        ordering = ('-date',)

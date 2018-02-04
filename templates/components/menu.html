@@ -12,6 +12,10 @@
       <div class="menu">
         <a class="item" href="/user/settings/">Settings</a>
         <a class="item" href="/logout">Log Out</a>
+        {% if request.user.is_superuser %}
+        <div class="divider"></div>
+        <a class="item" href="/admin">Administration</a>
+        {% endif %}
       </div>
     </div>
     {% else %}
@@ -36,6 +40,11 @@
         {% else %}
         <a href="/login" class="item">Log In</a>
         <a href="/signup" class="item">Sign Up</a>
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <div class="ui divider"></div>
+        <div class="header"> <i class="star icon"></i>Superuser</div>
+        <a class="item" href="/admin">Administration</a>
         {% endif %}
       </div>
     </div>
