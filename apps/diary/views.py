@@ -2,6 +2,7 @@ from django.views.generic.base import TemplateView
 from .models import DiaryEntry
 from django.http.response import HttpResponseRedirect
 from datetime import datetime
+from django.utils import timezone
 
 
 DATE_FORMAT = '%Y-%m-%d'
@@ -20,53 +21,38 @@ class DatesView(TemplateView):
 class DiaryView(TemplateView):
     template_name = 'diary_page.html'
 
+    def redirect_to_current_day(self):
+        now = timezone.now()
+        url = f'/diary/date-{now.strftime(DATE_FORMAT)}'
+        return HttpResponseRedirect(url)
+
     def get(self, request, date=None):
+        if not date:
+            return self.redirect_to_current_day()
+
         try:
             date = datetime.strptime(date or '', DATE_FORMAT)
         except ValueError:
             date = None
 
-        if date:
-            entry = DiaryEntry.objects.filter(
-                author=request.user, date=date
-            ).first()
-            if entry:
-                context = {
-                    'note_date': entry.date,
-                    'text': entry.text
-                }
-            else:
-                context = {
-                    'note_date': date,
-                }
-        else:
-            context = {}
+        if not date:
+            return self.redirect_to_current_day()
+
+        entry, created = DiaryEntry.objects.get_or_create(
+            author=request.user, date=date,
+            defaults={'text': ''}
+        )
+
+        context = {
+            'note_date': entry.date,
+            'text': entry.text
+        }
 
         return self.render_to_response(context)
 
     def post(self, request, date=None):
         date = request.POST.get('date')
         text = request.POST.get('text')
-
-        try:
-            date = datetime.strptime(date or '', DATE_FORMAT)
-        except ValueError:
-            return self.render_to_response({
-                'errors': ['Incorrect date format!']
-            })
-
-        entry = DiaryEntry.objects.filter(
-            author=request.user, date=date
-        ).first()
-
-        # if entry and entry.text:
-        #     return self.render_to_response({
-        #         'errors': [
-        #             f'Date "{date.strftime(DATE_FORMAT)}" already exists and has text!'
-        #         ],
-        #         'text': text,
-        #         'note_date': date,
-        #     })
 
         DiaryEntry.objects.update_or_create(
             author=request.user,
@@ -76,6 +62,4 @@ class DiaryView(TemplateView):
             }
         )
 
-        return HttpResponseRedirect(
-            f'/diary/date-{date.strftime(DATE_FORMAT)}'
-        )
+        return HttpResponseRedirect(f'/diary/date-{date}')

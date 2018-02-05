@@ -48,7 +48,7 @@ $(function() {
 <form class="" action="/diary/" method="post">
   {% csrf_token %}
   <div class="box effect2">
-    <input id="note-date" class="noselect" type="text" value="{{ note_date|date:'Y-m-d' }}" name="date" placeholder="Enter date" autocomplete="off" required>
+    <input id="note-date" class="noselect" type="text" value="{{ note_date|date:'Y-m-d' }}" name="date" readonly>
     <textarea id="note" class="noselect" placeholder="Enter text" name="text">{{ text }}</textarea>
   </div>
   <br>
