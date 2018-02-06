@@ -43,9 +43,14 @@ class DiaryView(TemplateView):
             defaults={'text': ''}
         )
 
+        prev_entry = DiaryEntry.objects.filter(date__lt=date).first()
+        next_entry = DiaryEntry.objects.filter(date__gt=date).last()
+
         context = {
             'note_date': entry.date,
-            'text': entry.text
+            'text': entry.text,
+            'prev_date': prev_entry.date.strftime(DATE_FORMAT) if prev_entry else None,
+            'next_date': next_entry.date.strftime(DATE_FORMAT) if next_entry else None,
         }
 
         return self.render_to_response(context)
