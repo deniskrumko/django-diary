@@ -55,13 +55,13 @@ $(function() {
 {# <a href="/diary/date-{{ next_date }}">NEXT</a> #}
 
 
-<form class="" action="/diary/" method="post">
+<form class="" action="/diary/date-{{ note_date|date:'Y-m-d' }}/" method="post">
   {% csrf_token %}
   <div class="box effect2" id="notebox">
     {% if prev_date %}
     <div class="ui left rail" style="padding-right: 0px;">
       <div class="ui sticky" style="float: right;">
-        <a href="/diary/date-{{ prev_date }}">
+        <a href="/diary/date-{{ prev_date|date:'Y-m-d' }}">
           <i class="chevron left icon prevnext"></i>
         </a>
       </div>
@@ -70,14 +70,14 @@ $(function() {
     {% if next_date %}
     <div class="ui right rail" style="padding-left: 0px;">
       <div class="ui sticky prevnext" style="float: left; ">
-        <a href="/diary/date-{{ next_date }}">
+        <a href="/diary/date-{{ next_date|date:'Y-m-d' }}">
           <i class="chevron right icon prevnext"></i>
         </a>
       </div>
     </div>
     {% endif %}
-    <input id="note-date" class="noselect" type="text" value="{{ note_date|date:'Y-m-d' }}" name="date" readonly>
-    <textarea id="note" class="noselect" placeholder="Enter text" name="text">{{ text }}</textarea>
+    <input id="note-date" class="noselect" type="text" value="{{ note_date|date:'F d, Y (l)' }}" name="date" readonly>
+    <textarea id="note" class="noselect" placeholder="Введите текст" name="text">{{ text }}</textarea>
   </div>
   <br>
   <div style="margin-left: 30px;">

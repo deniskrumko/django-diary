@@ -1,15 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% if entries %}
-  {% for entry in entries %}
-    <a href="/diary/date-{{ entry.date|date:'Y-m-d' }}/">{{ entry.date }}</a>
-    <br><br>
-  {% endfor %}
-  <a href="/diary/" class="ui button teal">Create new one</a>
-{% else %}
-  <h1>You have no entries!</h1>
+  <h3 style="font-weight: 400;">Заполняли ли Вы свой дневник последние 5 дней?</h3>
+  {% if last_days.0.1 %}
+  <p><i class="checkmark icon" style="color: #00b5ad;"></i>Сегодня ваш дневник уже заполнен! Круто!</p>
+  {% else %}
+  <p><i class="warning icon" style="color: #ffa500;"></i>Не забудьте сделать сегодняшнюю запись.</p>
+  {% endif %}
+  <div class=""style="text-align: center;">
+    {% for day, active in last_days %}
+      {% if forloop.counter == 1 %}
+      <a href="/diary/date-{{ day|date:'Y-m-d' }}/" class="ui teal button">Сегодня
+      {% else %}
+      <a href="/diary/date-{{ day|date:'Y-m-d' }}/" class="ui button">{{ day|date:'d E' }}
+      {% endif %}
+      {% if active %}
+       <i class="checkmark icon" style="margin: 0;"></i>
+       {% else %}
+       <i class="remove icon" style="margin: 0;"></i>
+      {% endif %}
+      </a>
+    {% endfor %}
+  </div>
   <br>
-  <a href="/diary/" class="ui button teal">Create new one</a>
-{% endif %}
+  <div class="ui divider">
+  </div>
+
+  <div class="" style="text-align: center;">
+    <h1 style="color: #00b5ad; font-size: 36px;">2018</h1>
+  {% for month_name, month in months.items %}
+    <div class="noselect" style="display: inline-block; margin: 10px; vertical-align: top;">
+      <h3 {% if month_name == current_month %}style="color: #00b5ad;"{% else %}style="font-weight: 400;"{% endif %}>{{ month_name }}</h3>
+      <div class="noselect" style="max-width: 220px; text-align: left;">
+        {% for day in month  %}
+          <a href="/diary/date-{{ day.0|date:'Y-m-d' }}/" {% if not day.1 %}style="color: #ccc;"{% else %}style="color: #00b5ad;"{% endif %} class="cal-single-day noselect">{{ day.0|date:'d' }}</a>
+          <span class="noselect" style="width: 10px; display: inline-block;"></span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+
+    </div>
+    <br>
+    <br>
+
+
 {% endblock %}

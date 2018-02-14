@@ -2,8 +2,8 @@
 def extra_context(request):
     return {
         'menu': (
-            ('Today', '/diary/'),
-            ('Calendar', '/diary/all-dates/'),
+            ('Сегодня', '/diary/'),
+            ('Календарь', '/diary/all-dates/'),
             # ('Tags', '/tags/'),
         )
     }

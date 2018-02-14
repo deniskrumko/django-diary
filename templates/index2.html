@@ -28,24 +28,30 @@
 
   {% if request.user.is_authenticated %}
     <div class="row">
-      <a href="/diary/" class="ui button teal">Current day</a>
-      <span style="padding: 7px 10px;">or</span>
-      <a href="/diary/all-dates/" class="ui button teal">View all dates</a>
+      <a href="/diary/" class="ui button teal">Сегодня</a>
+      <span style="padding: 7px 10px;">или</span>
+      <a href="/diary/all-dates/" class="ui button teal">Посмотреть даты</a>
     </div>
   {% else %}
     <div class="row">
-      <a href="/login" class="ui button teal">Log In</a>
-      <span style="padding: 7px 10px;">or</span>
-      <a href="/signup" class="ui button teal">Sign Up</a>
+      <a href="/login" class="ui button teal">Войти</a>
+      <span style="padding: 7px 10px;">или</span>
+      <a href="/signup" class="ui button teal">Создать аккаунт</a>
     </div>
   {% endif %}
   <br>
   <div class="box effect2 index-box">
-    <textarea id="note" class="noselect" name="text">Welcome to your Django-based service for storing your secrets!
+    <textarea id="note" class="noselect" name="text">Добро пожаловать в ваш сервис для хранения секретов!
 
-I hope you will find this diary as a nice place for keeping your memories about your life.
+Надеюсь, что этот дневник станет отличным местом для ваших воспоминаний.
 
-P.S. Also you can try write something right here :)</textarea>
+Отличительные особенности этого сервиса:
+
+  - Им никто не пользуется, кроме меня
+  - Здесь нет никакого шифрования
+  - Можно включить ночную тему в настройках! Круто же!
+
+P.S. Кстати можно прямо здесь что-нибудь написать :)</textarea>
   </div>
 </div>
 

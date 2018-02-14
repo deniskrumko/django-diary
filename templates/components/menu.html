@@ -10,41 +10,41 @@
     <div class="ui dropdown item">
       <i class="user circle icon" style="font-size: 20px;"></i> {{ request.user }}
       <div class="menu">
-        <a class="item" href="/user/settings/">Settings</a>
-        <a class="item" href="/logout">Log Out</a>
+        <a class="item" href="/user/settings/">Настройки</a>
+        <a class="item" href="/logout">Выйти</a>
         {% if request.user.is_superuser %}
         <div class="divider"></div>
-        <a class="item" href="/admin">Administration</a>
+        <a class="item" href="/admin">Администрация</a>
         {% endif %}
       </div>
     </div>
     {% else %}
-    <a href="/login" class="item">Log In</a>
-    <a href="/signup" class="item">Sign Up</a>
+    <a href="/login" class="item">Войти</a>
+    <a href="/signup" class="item">Создать аккаунт</a>
     {% endif %}
   </div>
   <div class="right menu mobile-show" style="z-index: 100;">
     <div class="ui icon dropdown teal button" style="height: 35px; margin-top: 5px; margin-right: 10px;">
-      <span class="text">Menu</span>
+      <span class="text">Меню</span>
       <div class="menu" style="margin-top: 10px; left: -97px !important;">
         {% if request.user.is_authenticated %}
-        <div class="header"> <i class="rocket icon"></i>Navigation</div>
+        <div class="header"> <i class="rocket icon"></i>Навигация</div>
 
         {% for m in menu %}
         <a class="item" href="{{ m.1 }}">{{ m.0 }}</a>
         {% endfor %}
         <div class="ui divider"></div>
-        <div class="header"> <i class="user icon"></i> User</div>
-        <a class="item" href="/user/settings/">Settings</a>
-        <a class="item" href="/logout">Log Out</a>
+        <div class="header"> <i class="user icon"></i>Пользователь</div>
+        <a class="item" href="/user/settings/">Настройки</a>
+        <a class="item" href="/logout">Выйти</a>
         {% else %}
-        <a href="/login" class="item">Log In</a>
-        <a href="/signup" class="item">Sign Up</a>
+        <a href="/login" class="item">Войти</a>
+        <a href="/signup" class="item">Создать аккаунт</a>
         {% endif %}
         {% if request.user.is_superuser %}
         <div class="ui divider"></div>
-        <div class="header"> <i class="star icon"></i>Superuser</div>
-        <a class="item" href="/admin">Administration</a>
+        <div class="header"> <i class="star icon"></i>Суперпользователь</div>
+        <a class="item" href="/admin">Администрация</a>
         {% endif %}
       </div>
     </div>

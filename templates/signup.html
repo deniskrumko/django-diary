@@ -10,30 +10,30 @@
       {% csrf_token %}
       <div class="ui form">
         <div class="field">
-          <label>Username</label>
+          <label>Имя пользователя</label>
           <input type="text" name="username" required>
         </div>
         <div class="field">
-          <label>Email</label>
+          <label>Почта</label>
           <input type="email" name="email" required>
         </div>
         <div class="field">
-          <label>First name</label>
+          <label>Имя</label>
           <input type="text" name="firstname">
         </div>
         <div class="field">
-          <label>Last name</label>
+          <label>Фамилия</label>
           <input type="text" name="lastname">
         </div>
         <div class="field">
-          <label>Password</label>
+          <label>Пароль</label>
           <input type="password" name="password" required>
         </div>
         <div class="field">
-          <label>Password again</label>
+          <label>Пароль повторно</label>
           <input type="password" name="password2" required>
         </div>
-        <input type="submit" value="Submit" class="ui button fullwidth teal">
+        <input type="submit" value="Отправить" class="ui button fullwidth teal">
       </div>
     </form>
 {% endblock %}

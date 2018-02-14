@@ -14,6 +14,7 @@ class User(AbstractUser):
         default={
             'theme': 'light',
             'font': 'Caveat',
+            'language': 'en',
         },
         blank=True,
         null=True,
@@ -21,7 +22,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
-        return self.email
+        return self.username or self.email
 
     class Meta:
         verbose_name = _('User')

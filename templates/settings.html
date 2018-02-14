@@ -5,11 +5,7 @@
 {{ block.super }}
 <script type="text/javascript">
 $(function() {
-
-  $('select.dropdown')
-  .dropdown()
-;
-
+  $('select.dropdown').dropdown();
 });
 </script>
 {% endblock %}
@@ -19,12 +15,12 @@ $(function() {
     {% csrf_token %}
     <div class="ui form">
       <div class="field">
-      <label>Theme</label>
+      <label>Тема</label>
       <div class="ui selection dropdown">
         <input type="hidden" name="theme" {% if current_theme %}value="{{ current_theme }}"{% endif %}>
         <i class="dropdown icon"></i>
         <div class="default text">
-          Select theme
+          Выберите тему
         </div>
         <div class="menu">
           {% for key, theme in themes.items %}
@@ -37,7 +33,7 @@ $(function() {
       </div>
     </div>
       <br>
-      <input type="submit" value="Save" class="ui button teal fullwidth">
+      <input type="submit" value="Сохранить" class="ui button teal fullwidth">
     </div>
   </form>
 {% endblock %}

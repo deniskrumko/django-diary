@@ -310,3 +310,9 @@ body {
 .prevnext {
   color: #00b6ad;
 }
+
+.cal-single-day:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: #00b5ad !important;
+}
