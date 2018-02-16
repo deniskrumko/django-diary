@@ -40,6 +40,10 @@ class DatesView(TemplateView):
         for dt in rrule(DAILY, dtstart=a, until=b):
             months.setdefault(month_names(dt.month), [])
 
+            if dt.day == 1:
+                for i in range(dt.weekday()):
+                    months[month_names(dt.month)].append('-')
+
             months[month_names(dt.month)].append(
                 (dt, DiaryEntry.objects.filter(
                     author=request.user, date=dt
@@ -60,7 +64,8 @@ class DatesView(TemplateView):
         context = {
             'months': months,
             'last_days': last_days,
-            'current_month': month_names(timezone.now().month)
+            'current_month': month_names(timezone.now().month),
+            'current_day': timezone.now().day,
         }
         return self.render_to_response(context)
 

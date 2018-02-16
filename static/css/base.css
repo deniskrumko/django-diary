@@ -313,6 +313,4 @@ body {
 
 .cal-single-day:hover {
   cursor: pointer;
-  font-weight: bold;
-  color: #00b5ad !important;
 }

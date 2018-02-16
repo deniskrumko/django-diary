@@ -31,10 +31,30 @@
   {% for month_name, month in months.items %}
     <div class="noselect" style="display: inline-block; margin: 10px; vertical-align: top;">
       <h3 {% if month_name == current_month %}style="color: #00b5ad;"{% else %}style="font-weight: 400;"{% endif %}>{{ month_name }}</h3>
+      <div class="" style="font-size: 10px; text-align: left; ">
+        <span style="padding-left: 1px; padding-right: 16px;">ПН</span>
+        <span style="padding-right: 18px;">ВТ</span>
+        <span style="padding-right: 17px;">СР</span>
+        <span style="padding-right: 17px;">ЧТ</span>
+        <span style="padding-right: 16px;">ПТ</span>
+        <span style="padding-right: 16px;">СБ</span>
+        <span style="">ВС</span>
+      </div>
       <div class="noselect" style="max-width: 220px; text-align: left;">
         {% for day in month  %}
-          <a href="/diary/date-{{ day.0|date:'Y-m-d' }}/" {% if not day.1 %}style="color: #ccc;"{% else %}style="color: #00b5ad;"{% endif %} class="cal-single-day noselect">{{ day.0|date:'d' }}</a>
+          {% if day == '-' %}
+          <span class="noselect" style="width: 29px; display: inline-block;"></span>
+          {% else %}
+          <a href="/diary/date-{{ day.0|date:'Y-m-d' }}/"
+          {% if day.0.day == current_day and month_name == current_month %}
+            style="color: #00b5ad; font-weight: bold;"
+          {% elif not day.1 %}
+            style="color: #ccc;"
+          {% else %}
+            style="color: #222;"
+          {% endif %} class="cal-single-day noselect">{{ day.0|date:'d' }}</a>
           <span class="noselect" style="width: 10px; display: inline-block;"></span>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
