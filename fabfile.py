@@ -31,6 +31,12 @@ def run():
     return manage('runserver')
 
 
+@task
+def shell():
+    """Run shell."""
+    return manage('shell_plus')
+
+
 # LOCALES
 # ============================================================================
 

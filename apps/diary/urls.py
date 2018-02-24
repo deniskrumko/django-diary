@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import DatesView, DiaryView
+from .views import DatesView, DiaryView, SearchView
 
 urlpatterns = [
     url(
@@ -17,5 +17,10 @@ urlpatterns = [
         r'^all-dates/$',
         DatesView.as_view(),
         name='dates'
+    ),
+    url(
+        r'^search/$',
+        SearchView.as_view(),
+        name='search'
     ),
 ]

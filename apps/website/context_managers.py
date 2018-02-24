@@ -4,6 +4,7 @@ def extra_context(request):
         'menu': (
             ('Сегодня', '/diary/'),
             ('Календарь', '/diary/all-dates/'),
+            ('Поиск', '/diary/search/')
             # ('Tags', '/tags/'),
         )
     }

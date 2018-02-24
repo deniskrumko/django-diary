@@ -119,3 +119,27 @@ class DiaryView(TemplateView):
         )
 
         return HttpResponseRedirect(f'/diary/date-{date}')
+
+
+class SearchView(TemplateView):
+    """
+    TODO
+    1. Normal query in URL
+    2. Pagination
+    3. Message - not found
+    """
+    template_name = 'search.html'
+
+    def get(self, request, search=None):
+        context = self.get_context_data()
+
+        context['results'] = DiaryEntry.objects.filter(
+            text__iregex=search
+        ) if search else None
+        context['search'] = search
+
+        return self.render_to_response(context)
+
+    def post(self, request):
+        search = request.POST.get('search')
+        return self.get(request, search=search)

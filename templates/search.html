@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Поиск по записям</h1>
+  <form class="" action="/diary/search/" method="post" style="">
+    {% csrf_token %}
+    <div class="" style="text-align: center;">
+      <div class="ui input" style="width: 400px;">
+        <input type="text" name="search" {% if search %}value="{{search}}" {% endif %}placeholder="Что будем искать?">
+      </div>
+      <input type="submit" value="Найти" class="ui button teal" style="padding-top: 13px; padding-bottom: 10px;">
+    </div>
+
+  </form>
+  {% if results %}
+  <h1>Результаты поиска</h1>
+  <p>Найдено записей: <b>{{ results|length }}</b></p>
+  <br>
+  {% for entry in results %}
+    <div class="">
+      <a href="/diary/date-{{ entry.date|date:'Y-m-d' }}/" style="font-size: 20px;">{{ entry.date }}</a>
+      <p style="padding-top: 5px;">{{ entry.text|slice:":400" }}...</p>
+      <br>
+    </div>
+  {% endfor %}
+
+  {% endif %}
+{% endblock %}
