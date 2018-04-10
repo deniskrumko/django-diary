@@ -66,6 +66,7 @@ class DatesView(TemplateView):
             'last_days': last_days,
             'current_month': month_names(timezone.now().month),
             'current_day': timezone.now().day,
+            'title': 'Django Diary - Даты',
         }
         return self.render_to_response(context)
 
@@ -103,6 +104,7 @@ class DiaryView(TemplateView):
             'text': entry.text,
             'prev_date': (entry.date - timezone.timedelta(days=1)),
             'next_date': (entry.date + timezone.timedelta(days=1)),
+            'title': entry.date,
         }
 
         return self.render_to_response(context)
@@ -137,6 +139,7 @@ class SearchView(TemplateView):
             text__iregex=search
         ) if search else None
         context['search'] = search
+        context['title'] = 'Django Diary - Поиск'
 
         return self.render_to_response(context)
 

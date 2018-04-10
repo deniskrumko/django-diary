@@ -1,6 +1,4 @@
 from django.views.generic.base import TemplateView
-from django.contrib.auth.models import User
-from django.http.response import HttpResponseRedirect
 
 from apps.website.themes import THEMES
 
@@ -20,7 +18,8 @@ class UserSettingsView(TemplateView):
 
         context = {
             'current_theme': current_theme,
-            'themes': THEMES
+            'themes': THEMES,
+            'title': 'Django Diary - Настройки'
         }
 
         return self.render_to_response(context)

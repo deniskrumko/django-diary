@@ -7,9 +7,19 @@ from django.http.response import HttpResponseRedirect
 class IndexView(TemplateView):
     template_name = 'index2.html'
 
+    def get_context_data(self, **kwargs):
+        return {
+            'title': 'Django Diary - Главная'
+        }
+
 
 class LoginView(TemplateView):
     template_name = 'login.html'
+
+    def get_context_data(self, **kwargs):
+        return {
+            'title': 'Django Diary - Вход'
+        }
 
     def post(self, request):
         username = request.POST.get('username')
@@ -26,6 +36,11 @@ class LoginView(TemplateView):
 
 class SignUpView(TemplateView):
     template_name = 'signup.html'
+
+    def get_context_data(self, **kwargs):
+        return {
+            'title': 'Django Diary - Регистрация'
+        }
 
     def post(self, request):
         username = request.POST.get('username')
