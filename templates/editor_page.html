@@ -46,16 +46,18 @@ $(function() {
 {% block content %}
 
 {% if messages %}
-
-{% for msg in messages %}
-  <div class="ui positive message">
-    {{ msg }}
-  </div>
-{% endfor %}
-
+  {% for message in messages %}
+    <div class="ui positive icon message">
+      <i class="close icon"></i>
+      <i class="save icon"></i>
+      <div class="content">
+        <div class="header">
+          {{ message }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 {% endif %}
-
-{# <a href="/diary/date-{{ next_date }}">NEXT</a> #}
 
 
 <form class="" action="/diary/date-{{ note_date|date:'Y-m-d' }}/" method="post">

@@ -1,21 +1,21 @@
 from django.conf.urls import url
 
-from .views import DatesView, DiaryView, SearchView
+from .views import CalendarView, EditorView, SearchView
 
 urlpatterns = [
     url(
         r'^$',
-        DiaryView.as_view(),
+        EditorView.as_view(),
         name='date'
     ),
     url(
         r'^date-(?P<date>[\w-]+)/$',
-        DiaryView.as_view(),
+        EditorView.as_view(),
         name='date'
     ),
     url(
         r'^all-dates/$',
-        DatesView.as_view(),
+        CalendarView.as_view(),
         name='dates'
     ),
     url(

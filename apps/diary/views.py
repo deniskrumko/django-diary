@@ -1,10 +1,14 @@
-from django.views.generic.base import TemplateView
-from .models import DiaryEntry
-from django.http.response import HttpResponseRedirect
-from datetime import datetime, date
-from django.utils import timezone
-from dateutil.rrule import rrule, DAILY
+from datetime import date, datetime
+
+from dateutil.rrule import DAILY, rrule
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http.response import HttpResponseRedirect
+from django.utils import timezone
+from django.views.generic.base import TemplateView
+
+from .models import DiaryEntry
+
 DATE_FORMAT = '%Y-%m-%d'
 
 
@@ -26,8 +30,9 @@ def month_names(index):
     return maps.get(index)
 
 
-class DatesView(TemplateView):
-    template_name = 'dates_view.html'
+class CalendarView(LoginRequiredMixin, TemplateView):
+    template_name = 'calendar.html'
+    login_url = '/login/'
 
     def get(self, request):
         current_year = timezone.now().year
@@ -36,6 +41,12 @@ class DatesView(TemplateView):
         b = date(current_year, 12, 31)
 
         months = {}
+        existing_entries = {
+            entry.date: True if entry.date else False
+            for entry in DiaryEntry.objects.filter(
+                author=request.user,
+            ).exclude(text="")
+        }
 
         for dt in rrule(DAILY, dtstart=a, until=b):
             months.setdefault(month_names(dt.month), [])
@@ -45,9 +56,7 @@ class DatesView(TemplateView):
                     months[month_names(dt.month)].append('-')
 
             months[month_names(dt.month)].append(
-                (dt, DiaryEntry.objects.filter(
-                    author=request.user, date=dt
-                ).exclude(text="").exists())
+                (dt.date(), existing_entries.get(dt.date(), False))
             )
 
         last_days = [
@@ -71,8 +80,9 @@ class DatesView(TemplateView):
         return self.render_to_response(context)
 
 
-class DiaryView(TemplateView):
-    template_name = 'diary_page.html'
+class EditorView(LoginRequiredMixin, TemplateView):
+    template_name = 'editor_page.html'
+    login_url = '/login/'
 
     def redirect_to_current_day(self):
         now = timezone.now()
