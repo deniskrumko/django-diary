@@ -45,12 +45,15 @@ $(function() {
 
 {% block content %}
 
-{% for error in errors %}
-<div class="ui negative message">
-<i class="close icon"></i>
-{{ error }}
-</div>
+{% if messages %}
+
+{% for msg in messages %}
+  <div class="ui positive message">
+    {{ msg }}
+  </div>
 {% endfor %}
+
+{% endif %}
 
 {# <a href="/diary/date-{{ next_date }}">NEXT</a> #}
 

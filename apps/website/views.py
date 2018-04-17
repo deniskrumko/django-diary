@@ -5,7 +5,7 @@ from django.http.response import HttpResponseRedirect
 
 
 class IndexView(TemplateView):
-    template_name = 'index2.html'
+    template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
         return {

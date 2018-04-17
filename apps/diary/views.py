@@ -4,7 +4,7 @@ from django.http.response import HttpResponseRedirect
 from datetime import datetime, date
 from django.utils import timezone
 from dateutil.rrule import rrule, DAILY
-
+from django.contrib import messages
 DATE_FORMAT = '%Y-%m-%d'
 
 
@@ -118,6 +118,10 @@ class DiaryView(TemplateView):
             defaults={
                 'text': text
             }
+        )
+
+        messages.add_message(
+            request, messages.SUCCESS, 'Дневник успешно сохранен!'
         )
 
         return HttpResponseRedirect(f'/diary/date-{date}')
