@@ -5,6 +5,7 @@ from .middleware import *  # noqa
 from .paths import *  # noqa
 from .static import *  # noqa
 from .templates import *  # noqa
+from .logging import *  # noqa
 
 ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
