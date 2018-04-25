@@ -38,77 +38,6 @@ body {
     .mobile-show { display: none !important; }
 }
 
-.index-box {
-  min-height: 500px !important;
-  transition: width 0.7s ease;
-}
-
-@media (min-width: 1281px) {
-
-  .index-box { width: 800px !important;}
-
-}
-
-/*
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-
-  .index-box { width: 700px !important;}
-
-}
-
-/*
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  .index-box { width: 600px !important;}
-
-}
-
-/*
-  ##Device = Tablets, Ipads (landscape)
-  ##Screen = B/w 768px to 1024px
-*/
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-
-  .index-box { width: 600px !important;}
-
-}
-
-/*
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
-
-@media (min-width: 481px) and (max-width: 767px) {
-
-  .index-box { width: 450px !important;}
-
-}
-
-/*
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
-
-@media (min-width: 320px) and (max-width: 480px) {
-
-  .index-box { width: 300px !important;}
-  #note {
-    font-size: 22px !important;
-  }
-  .box {
-    padding: 15px !important;
-  }
-
-}
 
 .logo {
   font-size: 32px;
@@ -221,54 +150,11 @@ body {
 }
 
 
-.box {
-	width:98%;
-  min-height: 850px;
-	background:#FFF;
-	margin:40px auto;
-  box-shadow: 0px 0px 1px #ddd;
-  padding: 30px;
-}
 
-/*==================================================
- * Effect 2
- * ===============================================*/
-.effect2
-{
-  position: relative;
-}
-.effect2:before, .effect2:after
-{
-  z-index: -1;
-  position: absolute;
-  content: "";
-  bottom: 15px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width:300px;
-  background: #999;
-  box-shadow: 0 15px 10px #999;
-  transform: rotate(-2deg);
-}
-.effect2:after
-{
-  transform: rotate(2deg);
-  right: 10px;
-  left: auto;
-}
 
-#note {
-  font-family: "Caveat", Arial;
-  font-size: 26px;
-  border-style: none;
-  border-color: Transparent;
-  overflow: auto;
-  resize: none;
-  width: 100%;
-  height: 100%;
-  caret-color: #00aa8d;
-}
+
+
+
 
 .noselect {
    cursor: default;
@@ -284,15 +170,7 @@ body {
    outline: none;
 }
 
-#note-date {
-  font-family: "Caveat", Arial;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  cursor: pointer;
-  border-style: none;
-  width: 100%;
-}
+
 
 .fullwidth {
   width: 100% !important;
@@ -305,10 +183,6 @@ body {
   background: white;
   border-radius: 6px;
   box-shadow: 0px 0px 1px #ccc;
-}
-
-.prevnext {
-  color: #00b6ad;
 }
 
 .cal-single-day:hover {

@@ -1,10 +1,12 @@
+from django.shortcuts import reverse
+
 
 def extra_context(request):
     return {
         'menu': (
-            ('Сегодня', '/diary/'),
-            ('Календарь', '/diary/all-dates/'),
-            ('Поиск', '/diary/search/')
+            ('Сегодня', reverse('diary:current-day')),
+            ('Календарь', reverse('diary:calendar')),
+            ('Поиск', reverse('diary:search'))
             # ('Tags', '/tags/'),
         )
     }

@@ -1,0 +1,56 @@
+.entry-date {
+  font-family: "Caveat", Arial;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  border-style: none;
+}
+
+.entry {
+  font-family: "Caveat", Arial;
+  font-size: 26px;
+  border-style: none;
+  border-color: Transparent;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.entry-edit {
+  caret-color: #00aa8d;
+  resize: none;
+}
+
+.entry-container {
+	width:98%;
+  height: 100%;
+	background:#FFF;
+	margin:40px auto;
+  box-shadow: 0px 0px 1px #ddd;
+  padding: 30px;
+}
+
+.paper-stack-effect
+{
+  position: relative;
+}
+.paper-stack-effect:before, .paper-stack-effect:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #999;
+  box-shadow: 0 15px 10px #999;
+  transform: rotate(-2deg);
+}
+.paper-stack-effect:after
+{
+  transform: rotate(2deg);
+  right: 10px;
+  left: auto;
+}

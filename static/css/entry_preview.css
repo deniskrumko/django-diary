@@ -1,0 +1,42 @@
+/* NAVIGATION ARROW */
+
+.navigation-arrow {
+  transition: all 0.3s ease;
+}
+
+.navigation-arrow:hover {
+  transform: scale(1.3);
+}
+
+/* EDIT BUTTON */
+
+.edit-icon {
+  float: right;
+  font-size: 20px !important;
+}
+
+.edit-link {
+  text-align: center;
+  height: 100px;
+}
+
+.edit-link a {
+  margin-top: 30px !important;
+}
+
+/* ENTRY PREVIEW */
+
+.entry p {
+  line-height: 1.15em !important;
+  margin-bottom: 0em !important;
+}
+
+.mini-icon {
+  font-size: 20px !important;
+}
+
+.mini-header {
+  font-family: "Caveat", Arial !important;
+  font-size: 20px !important;
+  margin-top: 0px !important;
+}

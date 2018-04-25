@@ -1,26 +1,31 @@
 from django.conf.urls import url
 
-from .views import CalendarView, EditorView, SearchView
+from . import views
 
 urlpatterns = [
     url(
         r'^$',
-        EditorView.as_view(),
-        name='date'
+        views.CurrentDayRedirectView.as_view(),
+        name='current-day'
     ),
     url(
         r'^date-(?P<date>[\w-]+)/$',
-        EditorView.as_view(),
-        name='date'
+        views.EntryPreviewView.as_view(),
+        name='entry-preview'
     ),
     url(
-        r'^all-dates/$',
-        CalendarView.as_view(),
-        name='dates'
+        r'^date-(?P<date>[\w-]+)/edit/$',
+        views.EntryEditView.as_view(),
+        name='entry-edit'
+    ),
+    url(
+        r'^calendar/$',
+        views.CalendarView.as_view(),
+        name='calendar'
     ),
     url(
         r'^search/$',
-        SearchView.as_view(),
+        views.SearchView.as_view(),
         name='search'
     ),
 ]

@@ -1,21 +1,20 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {# CSS #}
 {% block extrastyle %}
 {{ block.super }}
-<style media="screen">
-
-</style>
-
+<link rel="stylesheet" type="text/css" href="{% static 'css/entry_base.css' %}">
 {% endblock %}
 
 {% block body %}
-<div class="container" style="text-align: center;">
+<div class="container">
 <br>
 <br>
 <br>
 <div class="">
-  <div class="logo-block">
+  <div class="logo-block" style="text-align: center;">
     <div class="logo big noselect">
       Django Diary
     </div>
@@ -27,31 +26,33 @@
   <br>
 
   {% if request.user.is_authenticated %}
-    <div class="row">
-      <a href="/diary/" class="ui button teal">Сегодня</a>
+    <div class="row" style="text-align: center;">
+      <a href="{% url 'diary:current-day' %}" class="ui button teal">Сегодня</a>
       <span style="padding: 7px 10px;">или</span>
-      <a href="/diary/all-dates/" class="ui button teal">Посмотреть даты</a>
+      <a href="{% url 'diary:calendar' %}" class="ui button teal">Календарь</a>
     </div>
   {% else %}
-    <div class="row">
+    <div class="row" style="text-align: center;">
       <a href="/login" class="ui button teal">Войти</a>
       <span style="padding: 7px 10px;">или</span>
       <a href="/signup" class="ui button teal">Создать аккаунт</a>
     </div>
   {% endif %}
   <br>
-  <div class="box effect2 index-box">
-    <textarea id="note" class="noselect" name="text">Добро пожаловать в ваш сервис для хранения секретов!
+  <div class="entry-container paper-stack-effect index-box">
+    <div class="entry">
+      <p>Добро пожаловать в ваш сервис для хранения секретов!</p>
 
-Надеюсь, что этот дневник станет отличным местом для ваших воспоминаний.
+      <p>Надеюсь, что этот дневник станет отличным местом для ваших воспоминаний.</p>
 
-Отличительные особенности этого сервиса:
+      <p>Отличительные особенности этого сервиса:</p>
 
-  - Им никто не пользуется, кроме меня
-  - Здесь нет никакого шифрования
-  - Можно включить ночную тему в настройках! Круто же!
-
-P.S. Кстати можно прямо здесь что-нибудь написать :)</textarea>
+      <ul>
+        <li>Им никто не пользуется, кроме меня</li>
+        <li>Здесь нет никакого шифрования</li>
+        <li>Можно включить ночную тему в настройках! Круто же!</li>
+      </ul>
+    </div>
   </div>
 </div>
 

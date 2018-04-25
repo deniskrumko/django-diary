@@ -1,0 +1,12 @@
+.navigation-arrow {
+  color: #00b6ad;
+}
+
+.edit-button {
+  color: #00b6ad !important;
+  transition: all 0.2s ease;
+}
+
+.edit-button:hover {
+  color: #0a928b !important;
+}

@@ -9,6 +9,6 @@ urlpatterns = [
     url('', include('apps.website.urls')),
 
     # Apps
-    url(r'^diary/', include('apps.diary.urls')),
-    url(r'^user/', include('apps.users.urls')),
+    url(r'^diary/', include('apps.diary.urls', namespace='diary')),
+    url(r'^user/', include('apps.users.urls', namespace='users')),
 ]

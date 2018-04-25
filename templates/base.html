@@ -23,33 +23,35 @@
       href="https://fonts.googleapis.com/css?family=Caveat|Pacifico|Paytone+One"
       rel="stylesheet">
 
-    {# Base #}
-    {% if request.user.theme == 'light' or not request.user.is_authenticated %}
+    {# CSS #}
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
+    {# CSS Themes #}
+    {% if request.user.theme == 'light' or not request.user.is_authenticated %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themes/light.css' %}">
     {% elif request.user.theme == 'dark' %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base_dark.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/themes/dark.css' %}">
     {% endif %}
 
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 
-    {% block extrastyle %}{% endblock %}
+    {% block extrastyle %}
+    {% endblock %}
 
     {% block extrajs %}
-    <script src="{% static 'js/textarea.js' %}" charset="utf-8"></script>
     {% endblock %}
+
   </head>
+
   <body>
     {% block body %}
-    <main class="site-content">
-      <div class="ui container">
-        {% include "components/menu.html" %}
-        <div class="content">
-          {% block content %}
-
-          {% endblock %}
-        </div>
+    <div class="ui container">
+      {% include "components/menu.html" %}
+      <div class="content">
+        {% block content %}
+        {% endblock %}
       </div>
-    </main>
+    </div>
     {% endblock %}
   </body>
 </html>

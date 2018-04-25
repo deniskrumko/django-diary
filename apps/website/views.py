@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http.response import HttpResponseRedirect
 from django.views.generic.base import RedirectView, TemplateView
+from django.shortcuts import reverse
 
 
 class IndexView(TemplateView):
@@ -11,6 +12,13 @@ class IndexView(TemplateView):
         return {
             'title': 'Django Diary - Главная'
         }
+
+    def get(self, request):
+        """Method redirects to calendar page if user is authenticated."""
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse('diary:calendar'))
+
+        return super().get(request)
 
 
 class LoginView(TemplateView):

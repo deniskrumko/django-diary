@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{# JS #}
+{% block extrajs %}
+<script src="{% static 'js/textarea.js' %}" charset="utf-8"></script>
+
+<script type="text/javascript">
+$(function() {
+  autosize($('textarea'));
+  $(".entry-edit").focus();
+});
+</script>
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/entry_base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/entry_edit.css' %}">
+{% endblock %}
+
+{% block content %}
+<form class="" action="/diary/date-{{ entry.date|date:'Y-m-d' }}/edit/" method="post">
+  {% csrf_token %}
+  <div class="entry-container paper-stack-effect">
+    {# Entry date #}
+    <div class="entry-date">{{ entry.date|date:'F d, Y (l)' }}</div>
+
+    {# Editor area #}
+    <textarea class="entry entry-edit noselect" placeholder="Введите текст" name="text">{{ entry.text }}</textarea>
+  </div>
+  <br>
+  <div style="margin-left: 30px;">
+    <input type="submit" name="" value="Сохранить" class="ui button teal wide">
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+</form>
+{% endblock %}

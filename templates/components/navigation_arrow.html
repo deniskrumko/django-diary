@@ -1,0 +1,18 @@
+{% comment %}
+  HTML component for navigation arrows, that redirects to previous or next
+  entry in diary.
+
+  Args:
+    - dir (direction) - "left" or "right"
+    - ndir (negative direction) - "right" or "left"
+    - date (datetime) - date of entry (previous or next)
+
+{% endcomment %}
+
+<div class="ui {{ dir }} rail" style="padding-{{ ndir }}: 0px;">
+  <div class="ui sticky" style="float: {{ ndir }}; ">
+    <a href="/diary/date-{{ date|date:'Y-m-d' }}">
+      <i class="chevron {{ dir }} icon navigation-arrow"></i>
+    </a>
+  </div>
+</div>

@@ -3,9 +3,9 @@ from datetime import date, datetime
 from dateutil.rrule import DAILY, rrule
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect, Http404
 from django.utils import timezone
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, RedirectView
 
 from .models import DiaryEntry
 
@@ -80,29 +80,24 @@ class CalendarView(LoginRequiredMixin, TemplateView):
         return self.render_to_response(context)
 
 
-class EditorView(LoginRequiredMixin, TemplateView):
-    template_name = 'editor_page.html'
+class CurrentDayRedirectView(RedirectView):
+    """View to redirect user to current day diary."""
+
+    def get_redirect_url(self, *args, **kwargs):
+        now = timezone.now()
+        return f'/diary/date-{now.strftime(DATE_FORMAT)}'
+
+
+class EntryPreviewView(LoginRequiredMixin, TemplateView):
+    """View for diary entry preview."""
+    template_name = 'entry_preview.html'
     login_url = '/login/'
 
-    def redirect_to_current_day(self):
-        now = timezone.now()
-        url = f'/diary/date-{now.strftime(DATE_FORMAT)}'
-        return HttpResponseRedirect(url)
-
-    def get_entry_date(self, entry):
-        return entry.date.strftime(DATE_FORMAT) if entry else None
-
-    def get(self, request, date=None):
-        if not date:
-            return self.redirect_to_current_day()
-
+    def get(self, request, date):
         try:
             date = datetime.strptime(date or '', DATE_FORMAT)
         except ValueError:
-            date = None
-
-        if not date:
-            return self.redirect_to_current_day()
+            raise Http404()
 
         entry, created = DiaryEntry.objects.get_or_create(
             author=request.user, date=date,
@@ -110,14 +105,18 @@ class EditorView(LoginRequiredMixin, TemplateView):
         )
 
         context = {
-            'note_date': entry.date,
-            'text': entry.text,
             'prev_date': (entry.date - timezone.timedelta(days=1)),
             'next_date': (entry.date + timezone.timedelta(days=1)),
+            'entry': entry,
             'title': entry.date,
         }
 
         return self.render_to_response(context)
+
+
+class EntryEditView(EntryPreviewView):
+    template_name = 'entry_edit.html'
+    login_url = '/login/'
 
     def post(self, request, date=None):
         text = request.POST.get('text')

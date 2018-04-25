@@ -48,3 +48,11 @@ class DiaryEntry(models.Model):
         verbose_name = _('Diary entry')
         verbose_name_plural = _('Diary entries')
         ordering = ('-date',)
+
+    @property
+    def html(self):
+        """Property to represent entry text as HTML."""
+        return ''.join([
+            f'<p>{line}</p>' if line else '<p>&nbsp;<p>'
+            for line in self.text.split('\r\n')
+        ])

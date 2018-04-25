@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{# JS #}
+{% block extrajs %}
+<script type="text/javascript">
+  $(function() {
+
+    $('.ui.sticky')
+      .sticky({
+        context: '.entry-container',
+        offset: 120,
+      })
+    ;
+
+    $('.message .close')
+    .on('click', function() {
+      $(this)
+        .closest('.message')
+        .transition('fade')
+      ;
+    })
+  ;
+
+  });
+</script>
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/entry_base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/entry_preview.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{# Messages #}
+{% if messages %}
+  {% for message in messages %}
+    <div class="ui positive icon message">
+      <i class="close icon"></i>
+      <i class="save icon mini-icon"></i>
+      <div class="content">
+        <div class="header mini-header">
+          {{ message }}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+{# Main entry container #}
+<div class="entry-container paper-stack-effect">
+
+  {# Previous entry #}
+  {% if prev_date %}
+    {% include 'components/navigation_arrow.html' with dir="left" ndir="right" date=prev_date %}
+  {% endif %}
+
+  {# Next entry #}
+  {% if next_date %}
+    {% include 'components/navigation_arrow.html' with dir="right" ndir="left" date=next_date %}
+  {% endif %}
+
+  {# Edit icon #}
+  {% if entry.text %}
+    <a href="edit" class="edit-button">
+      <i class="edit-icon pencil icon"></i>
+    </a>
+  {% endif %}
+
+  {# Entry date #}
+  <div class="entry-date">{{ entry.date|date:'F d, Y (l)' }}</div>
+
+  {# Entry #}
+  <div class="entry">
+    {% if entry.text %}
+      {% autoescape off %}
+        {{ entry.html }}
+      {% endautoescape %}
+    {% else %}
+      <p class="edit-link">
+        <a href="edit" class="ui button teal wide">Заполнить дневник</a>
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
