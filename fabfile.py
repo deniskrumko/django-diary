@@ -116,3 +116,11 @@ def install_base_reqs():
     """Install base requirements."""
     print_msg('Installing base requirements')
     local('pip install -r requirements.txt')
+
+
+# HEROKU
+# ============================================================================
+
+@task
+def heroku_logs():
+    local('heroku logs --source app --tail')
