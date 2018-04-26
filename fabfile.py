@@ -7,13 +7,11 @@ def print_msg(msg):
     You need to install `termcolor` package to get colored messages.
 
     """
-    formatted_msg = '\n{}\n'.format(msg)
+    def green_msg(msg):
+        """Make message green color in console."""
+        return '\033[92m{0}\033[00m'.format(msg)
 
-    try:
-        from termcolor import cprint
-        cprint(formatted_msg, 'green')
-    except ImportError:
-        print(formatted_msg)
+    print(green_msg('\n{}\n'.format(msg)))
 
 
 # MAIN COMMANDS
@@ -28,6 +26,7 @@ def manage(command):
 @task
 def run():
     """Run server."""
+    print_msg('Running server')
     return manage('runserver')
 
 
@@ -43,8 +42,10 @@ def shell():
 @task
 def push():
     """Push changes to all servers."""
-    print_msg('git push...')
+    print_msg('1. Pushing to origin')
     local('git push origin master')
+
+    print_msg('2. Pushing to Heroku')
     local('git push heroku master')
 
 
