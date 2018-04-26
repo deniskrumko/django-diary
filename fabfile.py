@@ -37,6 +37,17 @@ def shell():
     return manage('shell_plus')
 
 
+# GIT
+# ============================================================================
+
+@task
+def push():
+    """Push changes to all servers."""
+    print_msg('git push...')
+    local('git push origin master')
+    local('git push heroku master')
+
+
 # LOCALES
 # ============================================================================
 
