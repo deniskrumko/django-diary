@@ -40,3 +40,36 @@
   font-size: 20px !important;
   margin-top: 0px !important;
 }
+
+/* ARROW BUTTON */
+
+.arrow-button {
+  border: 1px solid #999;
+  border-radius: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.arrow-button-left {
+  padding-left: 3px;
+  padding-right: 1px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.arrow-button-right {
+  padding-left: 4px;
+  padding-right: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.highlighted{
+  background-color: #e2e2e2;
+}
+
+.arrow-buttons-block {
+  text-align: center;
+  color: #999;
+  font-size: 12px;
+}

@@ -23,6 +23,20 @@
     })
   ;
 
+  // Navigation arrows - keypress
+
+  $(document).keydown(function(e) {
+      if (e.keyCode == 37) {
+        $('#left-arrow').addClass('highlighted');
+        window.location.replace("/diary/date-{{ prev_date|date:'Y-m-d' }}");
+      }
+
+      if (e.keyCode == 39) {
+        $('#right-arrow').addClass('highlighted');
+        window.location.replace("/diary/date-{{ next_date|date:'Y-m-d' }}");
+      }
+  });
+
   });
 </script>
 {% endblock %}
@@ -84,6 +98,19 @@
       </p>
     {% endif %}
   </div>
+</div>
+
+{# Navigation arrows #}
+<div class="arrow-buttons-block">
+  Используйте клавиши
+  <span class="arrow-button arrow-button-left" id="left-arrow">
+    <i class="long arrow alternate left icon"></i>
+  </span>
+  и
+  <span class="arrow-button arrow-button-right" id="right-arrow">
+    <i class="long arrow alternate right icon"></i>
+  </span>
+  для переключения страниц
 </div>
 
 {% endblock %}

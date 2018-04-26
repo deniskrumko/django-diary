@@ -122,5 +122,5 @@ def install_base_reqs():
 # ============================================================================
 
 @task
-def heroku_logs():
+def hlogs():
     local('heroku logs --source app --tail')
