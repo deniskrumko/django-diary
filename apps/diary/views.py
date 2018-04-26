@@ -3,9 +3,9 @@ from datetime import date, datetime
 from dateutil.rrule import DAILY, rrule
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http.response import HttpResponseRedirect, Http404
+from django.http.response import Http404, HttpResponseRedirect
 from django.utils import timezone
-from django.views.generic.base import TemplateView, RedirectView
+from django.views.generic.base import RedirectView, TemplateView
 
 from .models import DiaryEntry
 

@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # Index page
-    url('', include('apps.website.urls')),
+    url('', include('apps.website.urls', namespace='main')),
 
     # Apps
     url(r'^diary/', include('apps.diary.urls', namespace='diary')),

@@ -1,8 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http.response import HttpResponseRedirect
-from django.views.generic.base import RedirectView, TemplateView
 from django.shortcuts import reverse
+from django.views.generic.base import RedirectView, TemplateView
 
 
 class IndexView(TemplateView):
@@ -37,9 +37,9 @@ class LoginView(TemplateView):
 
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect('/diary/all-dates/')
+            return HttpResponseRedirect(reverse('diary:calendar'))
 
-        return HttpResponseRedirect('/login')
+        return HttpResponseRedirect(reverse('main:login'))
 
 
 class SignUpView(TemplateView):
@@ -61,13 +61,13 @@ class SignUpView(TemplateView):
         password2 = request.POST.get('password2')
 
         if User.objects.filter(username=username).exists():
-            return HttpResponseRedirect('/signup')
+            return HttpResponseRedirect(reverse('main:signup'))
 
         if User.objects.filter(email=email).exists():
-            return HttpResponseRedirect('/signup')
+            return HttpResponseRedirect(reverse('main:signup'))
 
         if password != password2:
-            return HttpResponseRedirect('/signup')
+            return HttpResponseRedirect(reverse('main:signup'))
 
         User.objects.create_user(
             username, email=email, password=password,
