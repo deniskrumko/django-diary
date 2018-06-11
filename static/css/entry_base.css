@@ -4,6 +4,7 @@
   font-weight: bold;
   margin-bottom: 20px;
   border-style: none;
+  color: #00b6ad;
 }
 
 .entry {
@@ -19,14 +20,16 @@
 .entry-edit {
   caret-color: #00aa8d;
   resize: none;
+  background: #282C34;
+  color: #ABB2C1;
 }
 
 .entry-container {
 	width:98%;
   height: 100%;
-	background:#FFF;
+  color: #ABB2C0;
+	background: #282C34;
 	margin:40px auto;
-  box-shadow: 0px 0px 1px #ddd;
   padding: 30px;
 }
 
@@ -45,7 +48,7 @@
   top: 80%;
   max-width:300px;
   background: #999;
-  box-shadow: 0 15px 10px #999;
+  box-shadow: 0 15px 10px #111;
   transform: rotate(-2deg);
 }
 .paper-stack-effect:after

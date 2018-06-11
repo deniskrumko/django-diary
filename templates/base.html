@@ -20,20 +20,19 @@
 
     {# Fonts #}
     <link
-      href="https://fonts.googleapis.com/css?family=Caveat|Pacifico|Paytone+One"
+      href="https://fonts.googleapis.com/css?family=Caveat|Paytone+One"
       rel="stylesheet">
 
     {# CSS #}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-
-    {# CSS Themes #}
-    {% if request.user.theme == 'light' or not request.user.is_authenticated %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/themes/light.css' %}">
-    {% elif request.user.theme == 'dark' %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/themes/dark.css' %}">
-    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base_dark.css' %}">
 
     <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('.ui.dropdown').dropdown();
+    });
+    </script>
 
     {% block extrastyle %}
     {% endblock %}

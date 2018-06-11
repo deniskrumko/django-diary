@@ -7,7 +7,7 @@
   {% else %}
   <p><i class="warning icon" style="color: #ffa500;"></i>Не забудьте сделать сегодняшнюю запись.</p>
   {% endif %}
-  <div class=""style="text-align: center;">
+  <div class="last-days" style="text-align: center;">
     {% for day, active in last_days %}
       {% if forloop.counter == 1 %}
       <a href="/diary/date-{{ day|date:'Y-m-d' }}/" class="ui teal button">Сегодня
@@ -40,7 +40,7 @@
         <span style="padding-right: 16px;">СБ</span>
         <span style="">ВС</span>
       </div>
-      <div class="noselect" style="max-width: 220px; text-align: left;">
+      <div class="noselect" style="max-width: 220px; text-align: left; ">
         {% for day in month  %}
           {% if day == '-' %}
           <span class="noselect" style="width: 29px; display: inline-block;"></span>
@@ -49,9 +49,9 @@
           {% if day.0.day == current_day and month_name == current_month %}
             style="color: #00b5ad; font-weight: bold;"
           {% elif not day.1 %}
-            style="color: #ccc;"
+            style="color: #5f6571;"
           {% else %}
-            style="color: #222;"
+            style="color: #ABB2C0;"
           {% endif %} class="cal-single-day noselect">{{ day.0|date:'d' }}</a>
           <span class="noselect" style="width: 10px; display: inline-block;"></span>
           {% endif %}

@@ -13,8 +13,4 @@ $(function() {
     event.stopPropagation();
 });
 
-  $('.ui.dropdown')
-    .dropdown()
-  ;
-
 });

@@ -2,6 +2,7 @@
 
 .navigation-arrow {
   transition: all 0.3s ease;
+  color: #ABB2C1;
 }
 
 .navigation-arrow:hover {
@@ -13,8 +14,13 @@
 .edit-icon {
   float: right;
   font-size: 20px !important;
+  color: #ABB2C1;
+  transition: all 0.3s ease;
 }
 
+.edit-icon:hover {
+  color: #00B5AD;
+}
 .edit-link {
   text-align: center;
   height: 100px;
@@ -44,7 +50,7 @@
 /* ARROW BUTTON */
 
 .arrow-button {
-  border: 1px solid #999;
+  border: 1px solid #676a71;
   border-radius: 4px;
   margin-left: 5px;
   margin-right: 5px;
@@ -65,11 +71,13 @@
 }
 
 .highlighted{
-  background-color: #e2e2e2;
+  background-color: #00B5AD;
+  color: #21252B;
+  border-color: #00B5AD;
 }
 
 .arrow-buttons-block {
   text-align: center;
-  color: #999;
+  color: #676a71;
   font-size: 12px;
 }
